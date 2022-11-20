@@ -1,3 +1,9 @@
+var score = {
+    win: 0,
+    lose: 0,
+    tie: 0,
+}
+
 function random(max) {
     num = Math.floor(Math.random() * max);
     if (num === 0) {
@@ -23,15 +29,27 @@ function outcome(x, y) {
     }
 }
 
-if (window.confirm("Do you want to play rock, paper, scissors?")) {
+function currentScore() {
+    scoreBoard = "Current Score: \n Win(s): " + score.win + "\n Lose(s): " + score.lose + "\n Tie(s): " + score.tie + "\n \n";
+}
+
+function playGame() {
     let player = prompt("Please enter your move (R, P, or S).", "");
     random(3);
     outcome(player.toLowerCase(), computer);
     if (result === "tie") {
-        alert("You tied!");
+        score.tie = score.tie + 1;
     } else if (result === "win") {
-        alert("You won!");
+        score.win = score.win + 1;
     } else {
-        alert("You lost!");
+        score.lose = score.lose + 1;
     }
+    currentScore()
+    if (confirm("The computer played " + computer.toUpperCase() + "! \n \n" + scoreBoard + "Would you like to play again?")) {
+        playGame();
+    }
+}
+
+if (confirm("Do you want to play rock, paper, scissors?")) {
+    playGame()
 }
