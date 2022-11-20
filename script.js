@@ -30,7 +30,7 @@ function outcome(x, y) {
 }
 
 function currentScore() {
-    scoreBoard = "Current Score: \n Win(s): " + score.win + "\n Lose(s): " + score.lose + "\n Tie(s): " + score.tie + "\n \n";
+    scoreBoard = "Current Score: \n Win(s): " + score.win + "\n Lose(s): " + score.lose + "\n Tie(s): " + score.tie + "\n\n";
 }
 
 function playGame() {
@@ -45,11 +45,13 @@ function playGame() {
         score.lose = score.lose + 1;
     }
     currentScore()
-    if (confirm("The computer played " + computer.toUpperCase() + "! \n \n" + scoreBoard + "Would you like to play again?")) {
+    if (confirm("The computer played " + computer.toUpperCase() + "! \n\n" + scoreBoard + "Would you like to play again?")) {
         playGame();
+    } else {
+        alert("Thank you for playing! \n\n Your final score is: \n" + score.win + " win(s), " + score.lose + " lose(s), and " + score.tie + " ties(s).");
     }
 }
 
-if (confirm("Do you want to play rock, paper, scissors?")) {
-    playGame()
+if (confirm("Would you like to play rock, paper, scissors?")) {
+    playGame();
 }
